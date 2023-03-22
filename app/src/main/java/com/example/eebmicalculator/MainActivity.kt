@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuCompat
+import androidx.databinding.DataBindingUtil
 import com.example.eebmicalculator.databinding.ActivityMainBinding
 import com.example.eebmicalculator.databinding.ActivityRatingBinding
 
@@ -24,8 +26,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.btnCal.setOnClickListener(this)
         if (isClear) {
             isClear = false
@@ -242,7 +243,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         }
 
+
     }
+
+//    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+//        super.onSaveInstanceState(outState, outPersistentState)
+//        outState.putString(R.id.wt,binding.edtWeight.text.toString())
+//    }
+//
+//    override fun onRestoreInstanceState(
+//        savedInstanceState: Bundle?,
+//        persistentState: PersistableBundle?
+//    ) {
+//        super.onRestoreInstanceState(savedInstanceState, persistentState)
+//    }
 
     override fun onResume() {
         super.onResume()
